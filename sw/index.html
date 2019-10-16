@@ -57,7 +57,7 @@ function CreateScanner(device){
             label: device ? device.label : null,
             resx: 640,
            // resy: 480,
-            //facingMode: 'user', //'environment'
+            facingMode: 'environment'
         },
         barcode: {
             barcodeTypes: ['EAN13', 'UPCA', 'Code128', 'DataMatrix', 'QRCode', 'QRCodeUnrecognized'],
@@ -80,12 +80,11 @@ function CreateScanner(device){
 
 function ChangeScannerSettings() {
     var scannerSettings = {
-        camera: {
+        //camera: {
             //id: 'gR3jhWx6C2IfGDeg/BxAxShXXD9KYq7FvF5IlK2RYpI=',
             //resx: 320,
             //resy: 240,
-	    facingMode: environment,
-        },
+        //},
         scanner: {
 			beep: true,
 			barcodeTimeout: 1000,
