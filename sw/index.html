@@ -80,11 +80,12 @@ function CreateScanner(device){
 
 function ChangeScannerSettings() {
     var scannerSettings = {
-        /*camera: {
-            id: 'gR3jhWx6C2IfGDeg/BxAxShXXD9KYq7FvF5IlK2RYpI=',
-            resx: 320,
-            resy: 240,
-        },*/
+        camera: {
+            //id: 'gR3jhWx6C2IfGDeg/BxAxShXXD9KYq7FvF5IlK2RYpI=',
+            //resx: 320,
+            //resy: 240,
+	    facingMode: environment,
+        },
         scanner: {
 			beep: true,
 			barcodeTimeout: 1000,
