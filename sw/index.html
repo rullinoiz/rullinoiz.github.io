@@ -87,7 +87,7 @@ function ChangeScannerSettings() {
         //},
         scanner: {
 			beep: true,
-			barcodeTimeout: 1000,
+			barcodeTimeout: 100,
 			frameTimeout: 100,
         },
         viewport: {
@@ -116,9 +116,9 @@ window.onload = function () {
 </head>
 <body>
   
-Use Firefox browser to open this file locally. Other browsers issue the error because require HTTPS when use camera feature.
+scan code\:
   
-<p id='status'>Downloading ...</p>
+<p id='status'>Waiting for permission...</p>
 
 <!-- <div id="datasymbol-barcode-viewport" style="display:block;width:100%; height:480px;"></div> -->
 <div id="datasymbol-barcode-viewport" style="display:block;width:640px; height:480px;"></div>
