@@ -20,7 +20,10 @@
       }).catch(function (e) {
         console.error(e);
       });
-      scanner.start();
+      function snap() {
+        return scanner.scan()
+      }
     </script>
+    <button onclick="snap()">Scan</button>
   </body>
 </html>
