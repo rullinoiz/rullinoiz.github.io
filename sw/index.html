@@ -1,130 +1,25 @@
-﻿<!doctype html>
-<html lang="en-us">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>DataSymbol.com Web SDK</title>
-    <script defer type="text/javascript" src="datasymbol-sdk-hlp.min.js"></script> 
-
-<script>
-function onBarcodeReady (barcodeResult) {
-    var barDataEl = document.getElementById('status');
-
-	for (var i = 0; i < barcodeResult.length; ++i) {
-	        var sBarcode = DSScanner.bin2String(barcodeResult[i]);
-	        var sPoints = "";
-	        for (var j = 0; j < 4; j++)
-	            sPoints += "(" + barcodeResult[i].points[j].x + ", " + barcodeResult[i].points[j].y + "),";
-
-	        barDataEl.innerHTML = barcodeResult[i].type + ": " + sBarcode + "|" + sPoints;
-	        console.log(barDataEl.innerHTML);
-    }
-};
-
-function onError(err) {
-    var statusElement = document.getElementById('status');
-    statusElement.innerHTML = 'Error: ' + err.message;
-
-    /*
-    if(err.name == 'NotFoundError')
-        alert('no camera');
-    else if(err.name == 'PermissionDeniedError')
-        alert('camera permission denied');
-    else if(err.name == 'NotCompatibleBrowser')
-        alert('browser err');
-    else if(err.name == 'ModuleAbort')
-        alert('module err');
-    else if(err.name == 'CannotInitLib')
-        alert('Cannot initialize barcode decoder SDK');
-    */
-}
-
-function CreateScanner(device){
-    var scannerSettings = {
-        scanner: {
-            key: '',
-            frameTimeout:	100,
-            barcodeTimeout:	1000,
-            beep: true,
-        },
-        viewport: {
-            id: 'datasymbol-barcode-viewport',
-            width: 500,	//if not defined then 100%
-            //height: 200,
-        },
-        camera: {
-            id: device ? device.id : null,
-            label: device ? device.label : null,
-            resx: 640,
-           // resy: 480,
-            facingMode: 'environment'
-        },
-        barcode: {
-            barcodeTypes: ['EAN13', 'UPCA', 'Code128', 'DataMatrix', 'QRCode', 'QRCodeUnrecognized'],
-            bQRCodeFindMicro: false,
-        },
-    };
-
-    DSScanner.addEventListener('onError', onError);
-    DSScanner.addEventListener('onBarcode', onBarcodeReady);
-
-    DSScanner.addEventListener('onScannerReady', function () {
-        console.log('HTML onScannerReady');
-        var statusElement = document.getElementById('status');
-        statusElement.innerHTML = ' ';	//statusElement.hidden = true;
-        DSScanner.StartScanner();
-    });
-
-    DSScanner.Create(scannerSettings);
-}
-
-function ChangeScannerSettings() {
-    var scannerSettings = {
-        //camera: {
-            //id: 'gR3jhWx6C2IfGDeg/BxAxShXXD9KYq7FvF5IlK2RYpI=',
-            //resx: 320,
-            //resy: 240,
-        //},
-        scanner: {
-			beep: true,
-			barcodeTimeout: 100,
-			frameTimeout: 100,
-        },
-        viewport: {
-            width: 300,
-        },
-        barcode: {
-            barcodeTypes: ['DataMatrix'],
-        },
-    };
-
-    DSScanner.setScannerSettings(scannerSettings);
-}
-
-window.onload = function () {
-    /*    DSScanner.getVideoDevices(function (devices) {
-            devices.forEach(function (device) {
-                alert("device:" + device.label + '|' + device.id);
-            });
-        });
-	*/
-	CreateScanner();
-}
-    
-</script>
-
-</head>
-<body>
-  
-scan code:
-  
-<p id='status'>Waiting for permission...</p>
-
-<!-- <div id="datasymbol-barcode-viewport" style="display:block;width:100%; height:480px;"></div> -->
-<div id="datasymbol-barcode-viewport" style="display:block;width:640px; height:480px;"></div>
-
-<button onclick="ChangeScannerSettings();">ChangeScannerSettings</button>
-<br><br>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Instascan</title>
+    <script type="text/javascript" src="instascan.min.js"></script>
+  </head>
+  <body>
+    <video id="preview"></video>
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+        console.log(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+        if (cameras.length > 0) {
+          scanner.start(cameras[0]);
+        } else {
+          console.error('No cameras found.');
+        }
+      }).catch(function (e) {
+        console.error(e);
+      });
+    </script>
   </body>
 </html>
