@@ -21,7 +21,9 @@
         console.error(e);
       });
       function snap() {
-        return scanner.scan();
+        document.open();
+        document.write(scanner.scan());
+        document.close();
       };
     </script>
     <button onclick="snap()">Scan</button>
