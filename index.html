@@ -28,7 +28,7 @@ if (window.XMLHttpRequest){
 
 xmlhttp.onreadystatechange=function(){
     if (xmlhttp.readyState==4 && xmlhttp.status==200){
-        document.getElementById("<krunked>").innerHTML=xmlhttp.responseText;
+        document.getElementById("bruv").innerHTML=xmlhttp.responseText;
     }
 }
 
@@ -36,8 +36,8 @@ xmlhttp.open("POST","https://krunker.io",true);
 xmlhttp.send();
 }
 </script>
-<krunked>
+<div id="bruv">
     <!-- pastes shit in here -->
-</krunked>
+</div>
 </body>
 </html>
