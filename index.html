@@ -16,25 +16,15 @@
 <title>Krunker</title>
 </head>
 <body style="background-color:black;">
- <script>
- function loadPage(){
-if (window.XMLHttpRequest){
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-}else{
-    // code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-}
-
-xmlhttp.onreadystatechange=function(){
-    if (xmlhttp.readyState==4 && xmlhttp.status==200){
-        document.getElementById("bruv").innerHTML=xmlhttp.responseText;
-    }
-}
-
-xmlhttp.open("POST","https://krunker.io",true);
-xmlhttp.send();
-}
+<script>
+xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+  if(xhr.readyState == 4 && xhr.status == 200) {
+    document.getElementById('bruv').innerHTML = xhr.responseText;
+  }
+};
+xhr.open('GET', 'https://krunker.io', true);
+xhr.send();
 </script>
 <div id="bruv">
     <!-- pastes shit in here -->
