@@ -1,30 +1,27 @@
 <!doctype html>
 <html>
 <head>
-
 <meta name="apple-mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-title" content="Krunker">
-
+  
 <link rel="apple-touch-startup-image" href="/ED74964D-02C7-4B6A-A86C-8AB11695EE95.jpeg">
-
 <link rel="apple-touch-icon" href="BEC66020-C38D-4864-8AA4-688165DC93D8.png">
-
 <link rel="icon" href="BEC66020-C38D-4864-8AA4-688165DC93D8.png">
 <link rel="shortcut icon" href="bec66020_c38d_4864_8aa4_688165dc93d8_Ucv_icon.ico">
-
+  
 <title>Krunker</title>
 </head>
 <body style="background-color:black;">
 <script>
-xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() {
-  if(xhr.readyState == 4 && xhr.status == 200) {
-    document.getElementById('bruv').innerHTML = xhr.responseText;
-  }
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+       document.getElementById("demo").innerHTML = xhttp.responseText;
+    }
 };
-xhr.open('GET', 'https://krunker.io', true);
-xhr.send();
+xhttp.open("GET", "iframe.html", true);
+xhttp.send();
 </script>
 <div id="bruv">
     <!-- pastes shit in here -->
