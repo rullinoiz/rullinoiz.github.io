@@ -12,10 +12,14 @@
 <title>Krunker</title>
 </head>
 <body>
-<form>
+<div id="bruv" width="100%" height="100%" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+<!-- pastes shit in here -->
+<br>
+<br>
+<p>type a website and press search</p>
 <input type="text" id="textbox">
-<input type="button" name="button" value="search" onclick="window.location.replace('https://rullinoiz.github.io/?q=' + encodeURIComponent(document.getElementById('textbox')));">
-</form>
+<input type="button" name="button" value="search" onclick="window.location.replace('https://rullinoiz.github.io/?q=' + encodeURIComponent(document.getElementById('textbox').value));">
+</div>
 <script>
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
@@ -25,11 +29,6 @@
 		document.getElementById("bruv").innerHTML = '<iframe src="' + decodeURIComponent(website) + '" width="100%" height="100%" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">';
 	}
 </script>
-<div id="bruv" width="100%" height="100%" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
-<!-- pastes shit in here -->
-<br>
-<br>
-<p>type a website and press search</p>
-</div>
+
 </body>
 </html>
