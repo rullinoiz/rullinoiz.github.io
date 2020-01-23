@@ -12,6 +12,10 @@
 <title>Krunker</title>
 </head>
 <body>
+<form>
+<input type="text" id="textbox">
+<input type="button" name="button" value="click" onclick="window.location.replace('https://rullinoiz.github.io/?q=' + encodeURIComponent(document.getElementById('textbox')));">
+</form>
 <script>
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
@@ -23,10 +27,6 @@
 		document.getElementById("bruv").innerHTML = 'type in a url and press search';
 	}
 </script>
-<form>
-<input type="text" id="textbox">
-<input type="button" name="button" value="click" onclick="window.location.replace('https://rullinoiz.github.io/?q=' + encodeURIComponent(document.getElementById('textbox')));">
-</form>
 <div id="bruv" width="100%" height="100%" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
     <!-- pastes shit in here -->
 </div>
